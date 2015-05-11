@@ -1,4 +1,4 @@
-/* global module */
+/*global module*/
 
 var Dijkstra = function (map) {
     "use strict";
@@ -80,6 +80,6 @@ var Dijkstra = function (map) {
     return this;
 };
 
-if(module){
+if (module) {
     module.exports.Dijkstra = Dijkstra;
 }
