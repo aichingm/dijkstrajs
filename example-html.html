@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>DijkstraJs</title>
+        <meta charset="utf-8" />
+        <script src="src/dijkstra.js"></script>
+        <script>
+            var data = {a: {b: 2}, b: {a: 3, c: 48}, c: {b: 4}};
+            var graph = new Dijkstra(data);
+            var v, path = graph.getPath("a", "c");
+            document.write("Data: " + JSON.stringify(data) + "<br>");
+            document.write("<ol>");
+            for (v in path) {
+                if (path.hasOwnProperty(v)) {
+                    document.write("<li>" + path[v] + "</li>");
+                }
+            }
+            document.write("</ol>");
+            data = {
+                "Frankfurt": {"Kassel": 173, "Mannheim": 85, "Würzburg": 217},
+                "Mannheim": {"Frankfurt": 85, "Karlsruhe": 80},
+                "Karlsruhe": {"Mannheim": 80, "Augsburg": 250},
+                "Augsburg": {"Karlsruhe": 250, "München": 84},
+                "München": {"Augsburg": 84, "Kassel": 502, "Nürnberg": 167},
+                "Kassel": {"Frankfurt": 173, "München": 502},
+                "Nürnberg": {"Würzburg": 103, "München": 167, "Stuttgart": 183},
+                "Stuttgart": {"Nürnberg": 183},
+                "Erfurt": {"Würzburg": 186},
+                "Würzburg": {"Erfurt": 186, "Nürnberg": 103, "Frankfurt": 217}
+            };
+            graph = new Dijkstra(data);
+            path = graph.getPath("Frankfurt", "München");
+            document.write("Data: " + JSON.stringify(data) + "<br>");
+            document.write("<ol>");
+            for (v in path) {
+                if (path.hasOwnProperty(v)) {
+                    document.write("<li>" + path[v] + "</li>");
+                }
+            }
+            document.write("</ol>");
+        </script>
+    </head>
+</html>
