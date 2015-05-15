@@ -17,7 +17,13 @@ var graph2 = new DIJKSTRA.Dijkstra({
     "Nürnberg": {"Würzburg": 103, "München": 167, "Stuttgart": 183},
     "Stuttgart": {"Nürnberg": 183},
     "Erfurt": {"Würzburg": 186},
-    "Würzburg": {"Erfurt": 186, "Nürnberg": 103, "Frankfurt": 217}
+    "Würzburg": {"Erfurt": 186, "Nürnberg": 103, "Frankfurt": 217},
+    "Wien": {}
 });
 console.log(graph2.getPath("Frankfurt", "München"));
+try{
+    graph2.getPath("Frankfurt", "Wien");
+}catch (e){
+    console.log(e);
+}
 console.log(graph2);

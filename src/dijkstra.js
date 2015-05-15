@@ -24,6 +24,9 @@ var Dijkstra = function (map) {
         }
     };
     this.buildPath = function (end) {
+        if (this.data.distance[end] === Number.MAX_VALUE) {
+            throw {name: "NoRoute", error: "No Route", from: this.data.findStart(), to: end};
+        }
         var path = [end], u = end;
         while (this.data.previous[u]) {
             u = this.data.previous[u];
@@ -72,6 +75,14 @@ var Dijkstra = function (map) {
         };
         this.inSet = function (vertex) {
             return this.set.indexOf(vertex) !== -1;
+        };
+        this.findStart = function () {
+            var v;
+            for (v in this.distance) {
+                if (this.distance[v] === 0 && this.previous[v] === undefined) {
+                    return v;
+                }
+            }
         };
         return this;
     };
