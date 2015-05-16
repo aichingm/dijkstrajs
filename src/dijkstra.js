@@ -1,7 +1,6 @@
 /*global module*/
 
 var Dijkstra = function (map) {
-    "use strict";
     this.getPath = function (start, end) {
         var u, v;
         this.data.distance[start] = 0;
@@ -91,6 +90,6 @@ var Dijkstra = function (map) {
     return this;
 };
 
-if (module) {
+if (typeof module !== "undefined") {
     module.exports.Dijkstra = Dijkstra;
 }
