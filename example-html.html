@@ -6,8 +6,9 @@
         <script>
             var data = {a: {b: 2}, b: {a: 3, c: 48}, c: {b: 4}};
             var graph = new Dijkstra(data);
+            document.write("Data: " + JSON.stringify(data) + "<br><br>");
+            document.write("From [a] to [c]:<br>");
             var v, path = graph.getPath("a", "c");
-            document.write("Data: " + JSON.stringify(data) + "<br>");
             document.write("<ol>");
             for (v in path) {
                 if (path.hasOwnProperty(v)) {
@@ -15,6 +16,7 @@
                 }
             }
             document.write("</ol>");
+            document.write("<hr>");
             data = {
                 "Frankfurt": {"Kassel": 173, "Mannheim": 85, "Würzburg": 217},
                 "Mannheim": {"Frankfurt": 85, "Karlsruhe": 80},
@@ -25,11 +27,13 @@
                 "Nürnberg": {"Würzburg": 103, "München": 167, "Stuttgart": 183},
                 "Stuttgart": {"Nürnberg": 183},
                 "Erfurt": {"Würzburg": 186},
-                "Würzburg": {"Erfurt": 186, "Nürnberg": 103, "Frankfurt": 217}
+                "Würzburg": {"Erfurt": 186, "Nürnberg": 103, "Frankfurt": 217},
+                "Wien": {}
             };
             graph = new Dijkstra(data);
+            document.write("Data: " + JSON.stringify(data) + "<br><br>");
+            document.write("From [Frankfurt] to [München]:<br>");
             path = graph.getPath("Frankfurt", "München");
-            document.write("Data: " + JSON.stringify(data) + "<br>");
             document.write("<ol>");
             for (v in path) {
                 if (path.hasOwnProperty(v)) {
@@ -37,6 +41,19 @@
                 }
             }
             document.write("</ol>");
+            try {
+                document.write("From [Frankfurt] to [Wien]:<br>");
+                path = graph.getPath("Frankfurt", "Wien");
+                document.write("Data: " + JSON.stringify(data) + "<br>");
+                document.write("<ol>");
+                for (v in path) {
+                    if (path.hasOwnProperty(v)) {
+                        document.write("<li>" + path[v] + "</li>");
+                    }
+                }
+            } catch (e) {
+                document.write("Exception: <strong>" + JSON.stringify(e) + "</strong>");
+            }
         </script>
     </head>
 </html>
