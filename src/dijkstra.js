@@ -1,8 +1,13 @@
 /*global module*/
 
 var Dijkstra = function (map) {
+    "use strict";
     this.getPath = function (start, end) {
         var u, v;
+        if (this.dataCache[start] === undefined) {
+            this.dataCache[start] = new this.DijkstraWorkingData(map);
+        }
+        this.data = this.dataCache[start];
         this.data.distance[start] = 0;
         while (this.data.set.length !== 0) {
             u = this.data.getVertexWithMinDistance();
@@ -86,7 +91,8 @@ var Dijkstra = function (map) {
         return this;
     };
     this.map = map;
-    this.data = new this.DijkstraWorkingData(map);
+    this.data = {};
+    this.dataCache = {};
     return this;
 };
 

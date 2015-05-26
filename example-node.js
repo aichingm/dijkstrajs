@@ -21,6 +21,9 @@ var graph2 = new DIJKSTRA.Dijkstra({
     "Wien": {}
 });
 console.log(graph2.getPath("Frankfurt", "München"));
+
+console.log(graph2.getPath("München", "Mannheim"));
+
 try{
     graph2.getPath("Frankfurt", "Wien");
 }catch (e){

@@ -41,6 +41,15 @@
                 }
             }
             document.write("</ol>");
+            document.write("From [München] to [Mannheim]:<br>");
+            path = graph.getPath("München", "Mannheim");
+            document.write("<ol>");
+            for (v in path) {
+                if (path.hasOwnProperty(v)) {
+                    document.write("<li>" + path[v] + "</li>");
+                }
+            }
+            document.write("</ol>");
             try {
                 document.write("From [Frankfurt] to [Wien]:<br>");
                 path = graph.getPath("Frankfurt", "Wien");
