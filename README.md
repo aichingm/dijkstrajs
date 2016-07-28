@@ -1,2 +1,2 @@
 # dijkstraJs
-A implementation of dijkstra's shortest path algorithm in javascript
+An implementation of dijkstra's shortest path algorithm in javascript
